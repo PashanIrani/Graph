@@ -24,4 +24,8 @@ public class Edge<T> {
         return toVertex;
     }
 
+    @Override
+    public String toString() {
+        return fromVertex.getData() + "-->" + toVertex.getData();
+    }
 }

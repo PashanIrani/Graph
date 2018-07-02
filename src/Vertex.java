@@ -4,7 +4,7 @@ import java.util.List;
 public class Vertex<T> {
 
     private T data;
-    private List<Edge> edges;
+    private ArrayList<Edge> edges;
 
     public Vertex(T data) {
         this.data = data;
@@ -17,5 +17,24 @@ public class Vertex<T> {
 
     public T getData() {
         return data;
+    }
+
+    public ArrayList<Edge> getEdges() {
+        return edges;
+    }
+
+    @Override
+    public String toString() {
+        String s = "";
+        ArrayList<Edge> edges = this.getEdges();
+
+        for (Edge e : edges) {
+            s += e + ", ";
+        }
+
+        if (edges.size() == 0) {
+            s = "none";
+        }
+        return data + ": " + s;
     }
 }

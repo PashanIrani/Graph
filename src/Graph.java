@@ -1,5 +1,4 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Graph<T> {
 
@@ -21,6 +20,7 @@ public class Graph<T> {
     public void addEdge(T v1, T v2) {
         addEdge(v1, v2, 0);
     }
+
     public void addEdge(T v1, T v2, int w) {
         Vertex<T> from;
         Vertex<T> to;
@@ -42,9 +42,10 @@ public class Graph<T> {
         }
 
         from.addEdge(to, w);
+        vertexMap.put(from.getData(), from);
     }
 
-    private boolean containsVertex(T v){
+    private boolean containsVertex(T v) {
         return vertexMap.containsKey(v);
     }
 
@@ -52,12 +53,37 @@ public class Graph<T> {
         return vertexMap.get(v);
     }
 
+    public void runDFS(T start) {
+        HashSet<T> visited = new HashSet<>();
+        Stack<T> stack = new Stack<>();
+
+        runDFS(start, visited);
+
+    }
+
+    private void runDFS(T currentNode, HashSet visited) {
+
+        visited.add(currentNode);
+
+        List<Edge> edges = getVertex(currentNode).getEdges();
+        
+        //loop through and visit unvisited neighbours
+        for (Edge e : edges) {
+            T data = (T) e.toVertex().getData();
+
+            if (!visited.contains(data)) {
+                runDFS(data, visited);
+            }
+        }
+    }
+
     @Override
     public String toString() {
         String s = "";
 
         for (T k : vertexMap.keySet()) {
-            s += k + ", ";
+            s += getVertex(k) + "\n";
+
         }
 
         return s;
