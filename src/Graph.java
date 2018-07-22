@@ -108,7 +108,7 @@ public class Graph<T> {
         //loop through and visit unvisited neighbours
         for (Edge e : edges) {
             T data = (T) e.toVertex().getData();
-            
+
             if (searchForNode != null && data.equals(searchForNode)) return true;
 
             if (!visited.contains(data)) {
@@ -122,7 +122,7 @@ public class Graph<T> {
     public boolean routeBetween(T a, T b) {
         return runDFS(a, null, b);
     }
-
+    
     @Override
     public String toString() {
         String s = "";

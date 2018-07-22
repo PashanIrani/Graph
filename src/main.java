@@ -2,15 +2,12 @@ public class main {
     public static void main(String[] args) {
         Graph<Character> g1 = new Graph<>();
         g1.addEdge('A', 'B');
-        g1.addEdge('B', 'E');
-        g1.addEdge('B', 'Y');
-        g1.addEdge('A', 'C');
-        g1.addEdge('C', 'E');
-        g1.addEdge('Y', 'Z');
-        g1.addEdge('Y', 'X');
-        g1.addEdge('X', 'H');
-        g1.addEdge('C', 'D');
+        g1.addEdge('B', 'C',1);
+        g1.addEdge('B', 'E', 2);
+        g1.addEdge('B', 'C',0); // this won't be added
+        g1.addEdge('C', 'A');
         System.out.println(g1);
-        System.out.println(g1.routeBetween('B', 'H'));
+
+        g1.visitAll('A');
     }
 }
