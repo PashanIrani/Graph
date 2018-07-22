@@ -26,6 +26,6 @@ public class Edge<T> {
 
     @Override
     public String toString() {
-        return fromVertex.getData() + "-->" + toVertex.getData();
+        return fromVertex.getData() + "-->" + toVertex.getData() + " (" + weigth + ")";
     }
 }
