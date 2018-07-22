@@ -7,7 +7,5 @@ public class main {
         g1.addEdge('B', 'C',0); // this won't be added
         g1.addEdge('C', 'A');
         System.out.println(g1);
-
-        g1.visitAll('A');
     }
 }
